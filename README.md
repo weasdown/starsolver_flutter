@@ -1,6 +1,6 @@
 # starsolver_flutter
 
-A new Flutter project.
+A Flutter library and app for solving "Two Not Touch"/"Star Battle" puzzles.
 
 ## Getting Started
 

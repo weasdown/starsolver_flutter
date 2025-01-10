@@ -1,6 +1,5 @@
-import 'package:starsolver_flutter/cell.dart';
-
 import 'board.dart';
+import 'cell.dart';
 
 /// The most generic form of cell group.
 class CellGroup {
@@ -18,6 +17,7 @@ class LinearCellGroup extends CellGroup {
   Cell operator [](int index) => cells[index];
 }
 
+/// A column in a [Board].
 class BoardColumn extends LinearCellGroup {
   BoardColumn({required super.index})
       : super(
@@ -30,6 +30,7 @@ class BoardColumn extends LinearCellGroup {
         );
 }
 
+/// A row in a [Board].
 class BoardRow extends LinearCellGroup {
   BoardRow({
     required super.index,

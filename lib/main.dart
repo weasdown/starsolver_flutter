@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:starsolver_flutter/board.dart';
+/// The starting point for running the app.
+library;
 
-import 'presentation/board_widget.dart';
+import 'package:flutter/material.dart';
+import 'src/presentation/puzzle_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,39 +36,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: PuzzlePage(),
-    );
-  }
-}
-
-class PuzzlePage extends StatelessWidget {
-  const PuzzlePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Star Battle Puzzle'),
-      ),
-      body: Column(
-        children: [
-          Flexible(
-            child: FractionallySizedBox(
-              heightFactor: 0.1,
-            ),
-          ),
-          Flexible(
-            child: Center(
-              child: FractionallySizedBox(
-                widthFactor: 0.8,
-                child: BoardWidget(
-                  board: Board(),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

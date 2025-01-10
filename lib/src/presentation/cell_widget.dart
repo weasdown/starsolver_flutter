@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../cell.dart';
+import '../logic/cell.dart';
 
+/// A widget to display a [Cell].
 class CellWidget extends StatelessWidget {
   final Cell cell;
   const CellWidget({super.key, required this.cell});

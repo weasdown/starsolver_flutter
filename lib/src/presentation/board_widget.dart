@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:starsolver_flutter/presentation/cell_widget.dart';
 
-import '../board.dart';
-import '../cell.dart';
+import '../logic/board.dart';
+import '../logic/cell.dart';
+import 'cell_widget.dart';
 
+/// A widget to display a [Board].
 class BoardWidget extends StatelessWidget {
   final Board board;
   const BoardWidget({super.key, required this.board});
