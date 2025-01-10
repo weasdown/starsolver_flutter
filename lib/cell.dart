@@ -1,26 +1,11 @@
-import 'package:flutter/material.dart';
-
 import 'board.dart';
 
 /// An individual cell within a [Board].
-class Cell extends StatelessWidget {
+class Cell {
   final Coordinate coord;
   final CellStatus status;
 
-  const Cell({super.key, required this.coord}) : status = CellStatus.blank;
-
-  final double size = 40;
-  final Color colour = Colors.lightBlueAccent;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: size,
-      width: size,
-      color: colour,
-      child: Center(child: Text(status.name)),
-    );
-  }
+  const Cell({required this.coord}) : status = CellStatus.blank;
 }
 
 /// The three possible statuses for a Cell.

@@ -1,25 +1,21 @@
-import 'package:flutter/material.dart';
-
 import 'cell.dart';
 import 'cell_group.dart';
 
 /// The board that a puzzle takes place within.
-class Board extends StatelessWidget {
-  Board({super.key})
+class Board {
+  Board()
       : rows = List<BoardRow>.from(
           List<int>.generate(dimension, (int index) => index).map(
             (int rowIndex) => BoardRow(index: rowIndex),
           ),
         ) {
-    cells = () {
-      List<Cell> cells = [];
+    List<Cell> cells = [];
 
-      for (BoardRow row in rows) {
-        cells.addAll(row.cells);
-      }
+    for (BoardRow row in rows) {
+      cells.addAll(row.cells);
+    }
 
-      return cells;
-    }();
+    this.cells = cells;
   }
 
   static const int dimension = 9;
@@ -27,15 +23,11 @@ class Board extends StatelessWidget {
   late final List<Cell> cells;
   final List<BoardRow> rows;
 
-  final double spacing = 8;
-
   @override
-  Widget build(BuildContext context) {
-    return GridView.count(
-      mainAxisSpacing: spacing,
-      crossAxisSpacing: spacing,
-      crossAxisCount: dimension,
-      children: cells,
-    );
+  String toString() {
+    // TODO: implement toString
+    String boardString = 'A Board';
+
+    return boardString;
   }
 }

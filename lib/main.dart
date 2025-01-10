@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:starsolver_flutter/board.dart';
 
+import 'presentation/board_widget.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -58,7 +60,9 @@ class PuzzlePage extends StatelessWidget {
             child: Center(
               child: FractionallySizedBox(
                 widthFactor: 0.8,
-                child: Board(),
+                child: BoardWidget(
+                  board: Board(),
+                ),
               ),
             ),
           ),
