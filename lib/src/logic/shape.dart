@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:color/color.dart';
 
 import 'board.dart';
 import 'cell.dart';
