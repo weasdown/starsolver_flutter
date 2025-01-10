@@ -16,7 +16,10 @@ class CellWidget extends StatelessWidget {
       height: size,
       width: size,
       color: colour,
-      child: Center(child: Text(cell.status.name)),
+      child: Center(
+        child: Text('${cell.status.name}\n'
+            '${cell.coord}'),
+      ),
     );
   }
 }
