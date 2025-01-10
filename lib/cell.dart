@@ -4,18 +4,20 @@ import 'board.dart';
 
 /// An individual cell within a [Board].
 class Cell extends StatelessWidget {
-  const Cell({super.key});
+  final Coordinate coord;
+  final CellStatus status;
 
-  final CellStatus status = CellStatus.blank;
+  const Cell({super.key, required this.coord}) : status = CellStatus.blank;
 
   final double size = 40;
+  final Color colour = Colors.lightBlueAccent;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: size,
       width: size,
-      color: Colors.pink,
+      color: colour,
       child: Center(child: Text(status.name)),
     );
   }
