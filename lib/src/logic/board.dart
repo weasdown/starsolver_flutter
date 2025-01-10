@@ -24,10 +24,5 @@ class Board {
   final List<BoardRow> rows;
 
   @override
-  String toString() {
-    // TODO: implement toString
-    String boardString = 'A Board';
-
-    return boardString;
-  }
+  String toString() => 'A Board';
 }
