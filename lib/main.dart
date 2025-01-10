@@ -47,11 +47,22 @@ class PuzzlePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Star Battle Puzzle'),
       ),
-      body: Center(
-        child: FractionallySizedBox(
-          widthFactor: 0.8,
-          child: Board(),
-        ),
+      body: Column(
+        children: [
+          Flexible(
+            child: FractionallySizedBox(
+              heightFactor: 0.1,
+            ),
+          ),
+          Flexible(
+            child: Center(
+              child: FractionallySizedBox(
+                widthFactor: 0.8,
+                child: Board(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

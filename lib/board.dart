@@ -27,9 +27,13 @@ class Board extends StatelessWidget {
   late final List<Cell> cells;
   final List<BoardRow> rows;
 
+  final double spacing = 8;
+
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      mainAxisSpacing: spacing,
+      crossAxisSpacing: spacing,
       crossAxisCount: dimension,
       children: cells,
     );
