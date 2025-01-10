@@ -42,4 +42,8 @@ class Coordinate {
       return false;
     }
   }
+
+  /// Returns a [String] representation of the [Coordinate].
+  @override
+  String toString() => '($x, $y)';
 }
