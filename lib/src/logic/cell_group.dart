@@ -15,6 +15,12 @@ class LinearCellGroup extends CellGroup {
   LinearCellGroup({required this.index, required super.cells});
 
   Cell operator [](int index) => cells[index];
+
+  /// Gets the number of stars in the [LinearCellGroup].
+  ///
+  /// For a complete [LinearCellGroup], this must be exactly 2.
+  int get numStars =>
+      cells.where((Cell cell) => cell.status == CellStatus.star).length;
 }
 
 /// A column in a [Board].

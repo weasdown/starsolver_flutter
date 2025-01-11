@@ -46,6 +46,12 @@ class Board {
   /// The length of a side of the [Board]'s grid.
   static const int dimension = 9;
 
+  /// Gets the number of stars in the [Board].
+  ///
+  /// For a complete [Board], this must be exactly 18.
+  int get numStars =>
+      cells.where((Cell cell) => cell.status == CellStatus.star).length;
+
   /// The rows in the [Board].
   List<Row> get rows => List<Row>.generate(
         dimension,
