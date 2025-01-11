@@ -1,13 +1,23 @@
 import 'package:starsolver_flutter/src/presentation/cell_widget.dart';
 
 import 'board.dart';
+import 'shape.dart';
 
 /// An individual cell within a [Board].
 class Cell {
+  /// The [Coordinate] of the [Cell] in the [Board].
+  ///
+  /// Note that, to align with computer vision common practices, the origin is
+  /// the **top left** [Cell] in the [Board].
   final Coordinate coord;
+
+  /// A [CellStatus] value showing whether the [Cell] is blank, a dot or a star.
   CellStatus status;
 
-  Cell({required this.coord})
+  /// The [Shape] that this [Cell] is within.
+  final Shape? shape;
+
+  Cell({required this.coord, this.shape})
       : status = CellStatus.blank,
         boundaries = CellBoundarySet(
           start: false,
