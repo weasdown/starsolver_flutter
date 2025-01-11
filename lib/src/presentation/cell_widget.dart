@@ -30,9 +30,10 @@ class _CellWidgetState extends State<CellWidget> {
   /// that side of the [CellWidget]'s [Cell] is a boundary between [Shape]s.
   BorderDirectional get borders {
     CellBorderSet cellBorders = CellBorderSet.fromCellBoundarySet(
-        boundarySet: widget.cell.boundaries,
-        boundaryBorderWidth: 3.0,
-        nonBoundaryBorderWidth: 1.0);
+      boundarySet: widget.cell.boundaries,
+      boundaryBorderWidth: 3.0,
+      nonBoundaryBorderWidth: 0.0,
+    );
 
     return BorderDirectional(
       start: cellBorders.start,
@@ -48,8 +49,6 @@ class _CellWidgetState extends State<CellWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final MaterialColor baseColour = Colors.purple;
-
     return GestureDetector(
       onTap: setNextStatus,
       onLongPress: setStar,
@@ -64,12 +63,13 @@ class _CellWidgetState extends State<CellWidget> {
             //   CellStatus.dot => baseColour[100],
             //   CellStatus.star => baseColour[400],
             // },
-            baseColour[100],
+            // baseColour[100],
+            widget.cell.shape!.colour,
         child: Center(
           child: Text(
             widget.cell.status.text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 28),
+            style: TextStyle(fontSize: 32),
           ),
           // Text('${widget.cell.status.name}\n'
           //     '${widget.cell.coord}'),
