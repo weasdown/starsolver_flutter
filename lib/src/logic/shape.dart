@@ -65,6 +65,14 @@ List<Color> get shapeColours {
   // //     );
 }
 
+/// Defines a list of standard colours to be used for Shapes.
+List<Color> standardColours = [
+  Colors.purple[100]!,
+  Colors.blue[200]!,
+  Colors.orange[50]!,
+  Colors.blue[50]!
+];
+
 /// Gets a list of nine empty [Shape]s.
 List<Shape> get testShapes {
   List<Shape> shapes = [
