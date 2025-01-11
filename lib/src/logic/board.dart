@@ -10,6 +10,14 @@ class Board {
     }
   }
 
+  // /// Constructor that does not set all the [cells] to blank.
+  // Board._({required this.shapes, required this.cells});
+  //
+  // /// Builds a copy of an existing [Board].
+  // factory Board.copy(Board board) =>
+  //     Board._(cells: board.cells, shapes: board.shapes);
+
+  /// Builds a list of 81 blank [Cell]s.
   static List<Cell> _buildCells() {
     List<Cell> cells = [];
     for (int vertIndex = 0; vertIndex < Board.dimension; vertIndex++) {
@@ -20,11 +28,11 @@ class Board {
     return cells;
   }
 
-  /// The length of a side of the [Board]'s grid.
-  static const int dimension = 9;
-
   /// The [Board]'s individual cells.
   late final List<Cell> cells;
+
+  /// The length of a side of the [Board]'s grid.
+  static const int dimension = 9;
 
   /// The rows in the [Board].
   List<Row> get rows => List<Row>.generate(
