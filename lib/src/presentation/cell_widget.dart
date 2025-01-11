@@ -6,13 +6,7 @@ import '../logic/cell.dart';
 class CellWidget extends StatefulWidget {
   final Cell cell;
 
-  const CellWidget({
-    super.key,
-    required this.cell,
-    this.colour = Colors.cyan,
-  });
-
-  final Color colour;
+  const CellWidget({super.key, required this.cell});
 
   @override
   State<CellWidget> createState() => _CellWidgetState();
@@ -31,22 +25,31 @@ class _CellWidgetState extends State<CellWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: size,
-      width: size,
-      color:
-          // switch (widget.cell.status) {
-          //   CellStatus.blank => Theme.of(context).canvasColor,
-          //   CellStatus.dot => Colors.grey,
-          //   CellStatus.star => Colors.greenAccent,
-          // }
-          widget.colour,
-      child: GestureDetector(
-        onTap: setNextStatus,
-        onLongPress: setStar,
+    final MaterialColor baseColour = Colors.purple;
+
+    final CellStatus cellStatus = widget.cell.status;
+
+    return GestureDetector(
+      onTap: setNextStatus,
+      onLongPress: setStar,
+      child: Container(
+        height: size,
+        width: size,
+        color:
+            // switch (widget.cell.status) {
+            //   CellStatus.blank => Theme.of(context).canvasColor,
+            //   CellStatus.dot => baseColour[100],
+            //   CellStatus.star => baseColour[400],
+            // },
+            baseColour[100],
         child: Center(
-          child: Text('${widget.cell.status.name}\n'
-              '${widget.cell.coord}'),
+          child: Text(
+            cellStatus.text,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 28),
+          ),
+          // Text('${widget.cell.status.name}\n'
+          //     '${widget.cell.coord}'),
         ),
       ),
     );
