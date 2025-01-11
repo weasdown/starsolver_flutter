@@ -25,7 +25,7 @@ class BoardWidget extends StatelessWidget {
       );
 
   /// Amount of spacing between [CellWidget]s.
-  final double spacingWithin = 8;
+  final double spacingWithin = 0;
 
   /// Set all [cells] to blank.
   ///
