@@ -7,10 +7,38 @@ class Cell {
   final Coordinate coord;
   CellStatus status;
 
-  Cell({required this.coord}) : status = CellStatus.blank;
+  Cell({required this.coord})
+      : status = CellStatus.blank,
+        boundaries = CellBoundarySet(
+          start: false,
+          top: false,
+          end: false,
+          bottom: false,
+        );
 
   /// Iterates the [Cell]'s [status] through the possible values of [CellStatus].
   void nextStatus() => status = status.nextStatus;
+
+  /// Whether each edge of the [Cell] is the boundary of a [Shape].
+  CellBoundarySet boundaries;
+}
+
+/// Whether each edge of the [Cell] is the boundary of a [Shape].
+class CellBoundarySet {
+  final bool start;
+  final bool top;
+  final bool end;
+  final bool bottom;
+
+  CellBoundarySet(
+      {required this.start,
+      required this.top,
+      required this.end,
+      required this.bottom});
+
+  /// Cell edges in the returned list are in the order `[start, top, end, bottom]`
+  /// (to match against `Padding.fromLTRB()`)..
+  List<bool> get values => [start, top, end, bottom];
 }
 
 /// The three possible statuses for a Cell.
