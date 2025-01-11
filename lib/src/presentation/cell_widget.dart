@@ -15,25 +15,42 @@ class CellWidget extends StatefulWidget {
 class _CellWidgetState extends State<CellWidget> {
   final double size = 40;
 
+  /// Sets the [widget.cell]'s [Cell.status] to [CellStatus.star].
   setStar() => setState(
         () => widget.cell.status = CellStatus.star,
       );
 
+  /// Sets the [widget.cell]'s [Cell.status] to the next [CellStatus] value,
+  /// or [CellStatus.blank] if currently [CellStatus.star].
   setNextStatus() => setState(
         () => widget.cell.status = widget.cell.status.nextStatus,
       );
+
+  /// Gets a [BorderDirectional] with [BorderSide]s corresponding to whether
+  /// that side of the [CellWidget]'s [Cell] is a boundary between [Shape]s.
+  BorderDirectional get borders {
+    CellBorderSet cellBorders = CellBorderSet.fromCellBoundarySet(
+        boundarySet: widget.cell.boundaries,
+        boundaryBorderWidth: 3.0,
+        nonBoundaryBorderWidth: 1.0);
+
+    return BorderDirectional(
+      start: cellBorders.start,
+      top: cellBorders.top,
+      end: cellBorders.end,
+      bottom: cellBorders.bottom,
+    );
+  }
+
+  BorderSide borderForEdge(bool edge) {
+    return BorderSide();
+  }
 
   @override
   Widget build(BuildContext context) {
     final MaterialColor baseColour = Colors.purple;
 
     final CellStatus cellStatus = widget.cell.status;
-
-    BorderDirectional borders = BorderDirectional(
-        top: BorderSide(
-      color: Colors.black,
-      width: 2.0,
-    ));
 
     return GestureDetector(
       onTap: setNextStatus,
@@ -42,7 +59,7 @@ class _CellWidgetState extends State<CellWidget> {
         height: size,
         width: size,
         // TODO set borders per side based on Shape boundaries (including width)
-        foregroundDecoration: BoxDecoration(border: Border.all(width: 2.0)),
+        foregroundDecoration: BoxDecoration(border: borders),
         color:
             // switch (widget.cell.status) {
             //   CellStatus.blank => Theme.of(context).canvasColor,
@@ -62,4 +79,31 @@ class _CellWidgetState extends State<CellWidget> {
       ),
     );
   }
+}
+
+/// Widget equivalent of [CellBoundarySet].
+class CellBorderSet {
+  late final BorderSide start;
+  late final BorderSide top;
+  late final BorderSide end;
+  late final BorderSide bottom;
+
+  final double boundaryBorderWidth;
+  final double nonBoundaryBorderWidth;
+
+  CellBorderSet.fromCellBoundarySet({
+    required CellBoundarySet boundarySet,
+    required this.boundaryBorderWidth,
+    required this.nonBoundaryBorderWidth,
+  }) {
+    start = _borderSideFromBool(boundarySet.start);
+    top = _borderSideFromBool(boundarySet.top);
+    end = _borderSideFromBool(boundarySet.end);
+    bottom = _borderSideFromBool(boundarySet.bottom);
+  }
+
+  List<BorderSide> get values => [start, top, end, bottom];
+
+  BorderSide _borderSideFromBool(bool isBoundary) => BorderSide(
+      width: isBoundary ? boundaryBorderWidth : nonBoundaryBorderWidth);
 }
