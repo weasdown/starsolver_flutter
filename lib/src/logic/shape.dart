@@ -58,3 +58,13 @@ List<Color> generateShapeColours() {
   // //     // ),
   // //     );
 }
+
+/// Gets a list of nine empty [Shape]s.
+List<Shape> get buildTestShapes => List<Shape>.generate(
+      9,
+      (int index) => Shape(
+        index: index,
+        cells: <Cell>[],
+        colour: generateShapeColours()[index],
+      ),
+    );
