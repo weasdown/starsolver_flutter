@@ -7,10 +7,7 @@ import 'cell_widget.dart';
 /// A widget to display a [Board].
 class BoardWidget extends StatefulWidget {
   final Board board;
-  // final List<CellWidget> cellWidgets;
-  const BoardWidget({super.key, required this.board
-      // , required this.cellWidgets
-      });
+  const BoardWidget({super.key, required this.board});
 
   @override
   State<BoardWidget> createState() => _BoardWidgetState();
