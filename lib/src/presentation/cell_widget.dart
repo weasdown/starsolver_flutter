@@ -29,12 +29,20 @@ class _CellWidgetState extends State<CellWidget> {
 
     final CellStatus cellStatus = widget.cell.status;
 
+    BorderDirectional borders = BorderDirectional(
+        top: BorderSide(
+      color: Colors.black,
+      width: 2.0,
+    ));
+
     return GestureDetector(
       onTap: setNextStatus,
       onLongPress: setStar,
       child: Container(
         height: size,
         width: size,
+        // TODO set borders per side based on Shape boundaries (including width)
+        foregroundDecoration: BoxDecoration(border: Border.all(width: 2.0)),
         color:
             // switch (widget.cell.status) {
             //   CellStatus.blank => Theme.of(context).canvasColor,
