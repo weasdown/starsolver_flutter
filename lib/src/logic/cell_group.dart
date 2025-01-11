@@ -25,8 +25,8 @@ class LinearCellGroup extends CellGroup {
 }
 
 /// A column in a [Board].
-class BoardColumn extends LinearCellGroup {
-  BoardColumn({required super.index})
+class Column extends LinearCellGroup {
+  Column({required super.index})
       : super(
           cells: List<Cell>.from(
             List<int>.generate(Board.dimension, (int index) => index).map(
@@ -35,6 +35,9 @@ class BoardColumn extends LinearCellGroup {
             ),
           ),
         );
+
+  /// Constructor to build a [Column] from a list of [Cell]s.
+  Column.fromCells({required super.index, required super.cells});
 }
 
 /// A row in a [Board].
