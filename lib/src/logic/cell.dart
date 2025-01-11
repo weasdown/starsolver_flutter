@@ -17,7 +17,7 @@ class Cell {
 enum CellStatus {
   blank(text: ' ', value: 0),
   dot(text: '•', value: 1),
-  star(text: '*', value: 2);
+  star(text: '⭐', value: 2);
 
   final String text;
   final int value;
