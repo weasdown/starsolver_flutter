@@ -24,7 +24,7 @@ class Shape {
 /// The [Color]s are spaced regularly around the colour wheel to have good
 /// contrast against each other.
 List<Color> get shapeColours {
-  throw UnimplementedError('generateShapeColours is not yet implemented.');
+  throw UnimplementedError('shapeColours is not yet implemented.');
 
   // double startH = 0;
   // double startS = 0;
