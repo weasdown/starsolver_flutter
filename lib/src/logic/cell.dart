@@ -74,6 +74,18 @@ class Coordinate {
 
   Coordinate({required this.x, required this.y});
 
+  @override
+  bool operator ==(Object other) {
+    if (other is Coordinate && other.x == x && other.y == y) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  int get hashCode => Object.hash(x, y);
+
   ///Returns whether the Coordinate is within the Board, so is valid.
   bool isWithinBoard() {
     bool componentWithinBoard({required int xOrY}) {
