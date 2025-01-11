@@ -50,8 +50,6 @@ class _CellWidgetState extends State<CellWidget> {
   Widget build(BuildContext context) {
     final MaterialColor baseColour = Colors.purple;
 
-    final CellStatus cellStatus = widget.cell.status;
-
     return GestureDetector(
       onTap: setNextStatus,
       onLongPress: setStar,
@@ -69,7 +67,7 @@ class _CellWidgetState extends State<CellWidget> {
             baseColour[100],
         child: Center(
           child: Text(
-            cellStatus.text,
+            widget.cell.status.text,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 28),
           ),
