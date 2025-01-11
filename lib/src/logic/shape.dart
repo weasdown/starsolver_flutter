@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'cell.dart';
+import 'board.dart';
 
 /// One of the nine shapes within a [Board], that contains several [Cell]s.
 class Shape {
@@ -22,7 +23,7 @@ class Shape {
 ///
 /// The [Color]s are spaced regularly around the colour wheel to have good
 /// contrast against each other.
-List<Color> generateShapeColours() {
+List<Color> get shapeColours {
   throw UnimplementedError('generateShapeColours is not yet implemented.');
 
   // double startH = 0;
@@ -60,11 +61,8 @@ List<Color> generateShapeColours() {
 }
 
 /// Gets a list of nine empty [Shape]s.
-List<Shape> get buildTestShapes => List<Shape>.generate(
-      9,
-      (int index) => Shape(
-        index: index,
-        cells: <Cell>[],
-        colour: generateShapeColours()[index],
-      ),
+List<Shape> get testShapes => List<Shape>.generate(
+      Board.dimension,
+      (int index) =>
+          Shape(index: index, cells: [], colour: shapeColours[index]),
     );
