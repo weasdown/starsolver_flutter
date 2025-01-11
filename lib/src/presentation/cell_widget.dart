@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../logic/board.dart';
 import '../logic/cell.dart';
 
 /// A widget to display a [Cell].
 class CellWidget extends StatefulWidget {
   final Cell cell;
+  final Board board;
 
-  const CellWidget({super.key, required this.cell});
+  final void Function() onComplete;
+
+  const CellWidget({
+    super.key,
+    required this.cell,
+    required this.board,
+    required this.onComplete,
+  });
 
   @override
   State<CellWidget> createState() => _CellWidgetState();
@@ -16,15 +25,26 @@ class _CellWidgetState extends State<CellWidget> {
   final double size = 40;
 
   /// Sets the [widget.cell]'s [Cell.status] to [CellStatus.star].
-  setStar() => setState(
-        () => widget.cell.status = CellStatus.star,
-      );
+  setStar() {
+    setState(
+      () => widget.cell.status = CellStatus.star,
+    );
+
+    if (widget.board.isComplete) {
+      widget.onComplete();
+    }
+  }
 
   /// Sets the [widget.cell]'s [Cell.status] to the next [CellStatus] value,
   /// or [CellStatus.blank] if currently [CellStatus.star].
-  setNextStatus() => setState(
-        () => widget.cell.status = widget.cell.status.nextStatus,
-      );
+  setNextStatus() {
+    CellStatus next = widget.cell.status.nextStatus;
+    if (next == CellStatus.star) {
+      setStar();
+    } else {
+      setState(() => widget.cell.status = next);
+    }
+  }
 
   /// Gets a [BorderDirectional] with [BorderSide]s corresponding to whether
   /// that side of the [CellWidget]'s [Cell] is a boundary between [Shape]s.
@@ -57,22 +77,13 @@ class _CellWidgetState extends State<CellWidget> {
         width: size,
         // TODO set borders per side based on Shape boundaries (including width)
         foregroundDecoration: BoxDecoration(border: borders),
-        color:
-            // switch (widget.cell.status) {
-            //   CellStatus.blank => Theme.of(context).canvasColor,
-            //   CellStatus.dot => baseColour[100],
-            //   CellStatus.star => baseColour[400],
-            // },
-            // baseColour[100],
-            widget.cell.shape!.colour,
+        color: widget.cell.shape!.colour,
         child: Center(
           child: Text(
             widget.cell.status.text,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 32),
           ),
-          // Text('${widget.cell.status.name}\n'
-          //     '${widget.cell.coord}'),
         ),
       ),
     );

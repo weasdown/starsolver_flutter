@@ -53,7 +53,11 @@ class Board extends CellGroup {
   static const int dimension = 9;
 
   bool get isComplete {
-    return (numStars == 18 && !rows.any((Row row) => row.numStars != 2));
+    bool has18stars = numStars == 18;
+    bool rowsHave2 = !rows.any((Row row) => row.numStars != 2);
+    bool columnsHave2 = !columns.any((Column column) => column.numStars != 2);
+
+    return has18stars && rowsHave2 && columnsHave2;
   }
 
   /// The rows in the [Board].
