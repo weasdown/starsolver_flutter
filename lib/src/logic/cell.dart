@@ -1,22 +1,32 @@
+import 'package:starsolver_flutter/src/presentation/cell_widget.dart';
+
 import 'board.dart';
 
 /// An individual cell within a [Board].
 class Cell {
   final Coordinate coord;
-  final CellStatus status;
+  CellStatus status;
 
-  const Cell({required this.coord}) : status = CellStatus.blank;
+  Cell({required this.coord}) : status = CellStatus.blank;
+
+  /// Iterates the [Cell]'s [status] through the possible values of [CellStatus].
+  void nextStatus() => status = status.nextStatus;
 }
 
 /// The three possible statuses for a Cell.
 enum CellStatus {
-  blank(text: ' '),
-  dot(text: '•'),
-  star(text: '*');
+  blank(text: ' ', value: 0),
+  dot(text: '•', value: 1),
+  star(text: '*', value: 2);
 
   final String text;
+  final int value;
 
-  const CellStatus({required this.text});
+  const CellStatus({required this.text, required this.value});
+
+  /// Gets the next value of [CellStatus], so it can be iterated when a
+  /// [CellWidget] is tapped.
+  CellStatus get nextStatus => CellStatus.values[value < 2 ? value + 1 : 0];
 }
 
 /// A [Cell]'s coordinate in the [Board].

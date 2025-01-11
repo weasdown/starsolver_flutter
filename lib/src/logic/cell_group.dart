@@ -31,8 +31,9 @@ class BoardColumn extends LinearCellGroup {
 }
 
 /// A row in a [Board].
-class BoardRow extends LinearCellGroup {
-  BoardRow({
+class Row extends LinearCellGroup {
+  /// Basic constructor.
+  Row({
     required super.index,
   }) : super(
           cells: List<Cell>.from(
@@ -42,4 +43,7 @@ class BoardRow extends LinearCellGroup {
             ),
           ),
         );
+
+  /// Constructor to build a [Row] from a list of [Cell]s.
+  Row.fromCells({required super.index, required super.cells});
 }

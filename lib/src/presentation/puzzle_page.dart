@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:starsolver_flutter/logic.dart';
 
-import '../logic/board.dart';
 import 'board_widget.dart';
 
 /// An app page that displays a puzzle.
 class PuzzlePage extends StatelessWidget {
-  const PuzzlePage({super.key});
+  final Board board;
+  const PuzzlePage({super.key, required this.board});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class PuzzlePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Star Battle Puzzle'),
       ),
-      body: BoardWidget(board: Board()),
+      body: BoardWidget(board: board),
     );
   }
 }

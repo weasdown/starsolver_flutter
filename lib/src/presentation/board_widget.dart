@@ -5,15 +5,28 @@ import '../logic/cell.dart';
 import 'cell_widget.dart';
 
 /// A widget to display a [Board].
-class BoardWidget extends StatelessWidget {
+class BoardWidget extends StatefulWidget {
   final Board board;
-  const BoardWidget({super.key, required this.board});
+  // final List<CellWidget> cellWidgets;
+  const BoardWidget({super.key, required this.board
+      // , required this.cellWidgets
+      });
 
+  @override
+  State<BoardWidget> createState() => _BoardWidgetState();
+}
+
+class _BoardWidgetState extends State<BoardWidget> {
   final double spacingWithin = 8;
+
   final double spacingAround = 40.0;
 
   @override
   Widget build(BuildContext context) {
+    List<CellWidget> cellWidgets = List<CellWidget>.from(
+      widget.board.cells.map((Cell cell) => CellWidget(cell: cell)),
+    );
+
     return Padding(
       padding: EdgeInsets.fromLTRB(
         spacingAround,
@@ -25,9 +38,7 @@ class BoardWidget extends StatelessWidget {
         mainAxisSpacing: spacingWithin,
         crossAxisSpacing: spacingWithin,
         crossAxisCount: Board.dimension,
-        children: List<CellWidget>.from(
-          board.cells.map((Cell cell) => CellWidget(cell: cell)),
-        ),
+        children: cellWidgets,
       ),
     );
   }
