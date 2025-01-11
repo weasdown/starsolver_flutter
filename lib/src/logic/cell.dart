@@ -15,9 +15,9 @@ class Cell {
   CellStatus status;
 
   /// The [Shape] that this [Cell] is within.
-  final Shape? shape;
+  late final Shape? shape;
 
-  Cell({required this.coord, this.shape})
+  Cell({required this.coord})
       : status = CellStatus.blank,
         boundaries = CellBoundarySet(
           start: false,

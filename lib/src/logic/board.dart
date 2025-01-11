@@ -8,6 +8,14 @@ class Board {
     if (shapes.length != 9) {
       throw ArgumentError('The Board must have exactly 9 Shapes.');
     }
+
+    // Adds a Shape to shapes and sets the shape in its cells.
+    for (Shape newShape in shapes) {
+      for (Coordinate coord in newShape.cellCoords) {
+        Cell shapeCell = cellFromCoord(coord);
+        shapeCell.shape = newShape;
+      }
+    }
   }
 
   // /// Constructor that does not set all the [cells] to blank.
@@ -27,6 +35,10 @@ class Board {
     }
     return cells;
   }
+
+  /// Returns a [Cell] from the [Board]'s [cells] with a given [Coordinate].
+  Cell cellFromCoord(Coordinate coord) =>
+      cells.where((Cell cell) => cell.coord == coord).first;
 
   /// The [Board]'s individual cells.
   late final List<Cell> cells;
