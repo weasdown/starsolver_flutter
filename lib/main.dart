@@ -15,12 +15,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // TODO take shapes as an argument instead of building empty Shapes here.
-    List<Shape> testShapes = List<Shape>.generate(
-      Board.dimension,
-      (int index) => Shape(index: index, cells: [], colour: Colors.greenAccent),
-    );
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
