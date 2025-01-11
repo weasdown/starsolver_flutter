@@ -3,8 +3,8 @@ import 'cell_group.dart';
 import 'shape.dart';
 
 /// The board that a puzzle takes place within.
-class Board {
-  Board({required this.shapes}) : cells = _buildCells() {
+class Board extends CellGroup {
+  Board({required this.shapes}) : super(cells: _buildCells()) {
     if (shapes.length != 9) {
       throw ArgumentError('The Board must have exactly 9 Shapes.');
     }
@@ -40,17 +40,12 @@ class Board {
   Cell cellFromCoord(Coordinate coord) =>
       cells.where((Cell cell) => cell.coord == coord).first;
 
-  /// The [Board]'s individual cells.
-  late final List<Cell> cells;
-
   /// The length of a side of the [Board]'s grid.
   static const int dimension = 9;
 
-  /// Gets the number of stars in the [Board].
-  ///
-  /// For a complete [Board], this must be exactly 18.
-  int get numStars =>
-      cells.where((Cell cell) => cell.status == CellStatus.star).length;
+  bool get isComplete {
+    return (numStars == 18 && !rows.any((Row row) => row.numStars != 2));
+  }
 
   /// The rows in the [Board].
   List<Row> get rows => List<Row>.generate(

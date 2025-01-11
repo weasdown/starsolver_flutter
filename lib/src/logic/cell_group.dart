@@ -6,6 +6,13 @@ class CellGroup {
   List<Cell> cells;
 
   CellGroup({required this.cells});
+
+  /// Gets the number of stars in the [CellGroup].
+  ///
+  /// For a complete [Board], each [Row] or [Column] must have exactly 2 stars,
+  /// meaning the whole [Board] must have exactly 18 stars.
+  int get numStars =>
+      cells.where((Cell cell) => cell.status == CellStatus.star).length;
 }
 
 /// A cell group where all the cells are in a line of width one cell.
@@ -15,12 +22,6 @@ class LinearCellGroup extends CellGroup {
   LinearCellGroup({required this.index, required super.cells});
 
   Cell operator [](int index) => cells[index];
-
-  /// Gets the number of stars in the [LinearCellGroup].
-  ///
-  /// For a complete [LinearCellGroup], this must be exactly 2.
-  int get numStars =>
-      cells.where((Cell cell) => cell.status == CellStatus.star).length;
 }
 
 /// A column in a [Board].
