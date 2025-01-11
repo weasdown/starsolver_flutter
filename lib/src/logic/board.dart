@@ -40,6 +40,15 @@ class Board extends CellGroup {
   Cell cellFromCoord(Coordinate coord) =>
       cells.where((Cell cell) => cell.coord == coord).first;
 
+  /// The columns in the [Board].
+  List<Column> get columns => List<Column>.generate(
+        dimension,
+        (int index) => Column.fromCells(
+          index: index,
+          cells: cells.where((Cell cell) => cell.coord.y == index).toList(),
+        ),
+      ).toList();
+
   /// The length of a side of the [Board]'s grid.
   static const int dimension = 9;
 
