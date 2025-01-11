@@ -66,8 +66,153 @@ List<Color> get shapeColours {
 }
 
 /// Gets a list of nine empty [Shape]s.
-List<Shape> get testShapes => List<Shape>.generate(
-      Board.dimension,
-      (int index) =>
-          Shape(index: index, cellCoords: [], colour: shapeColours[index]),
-    );
+List<Shape> get testShapes {
+  List<Shape> shapes = [
+    Shape(
+        index: 0,
+        cellCoords: [
+          Coordinate(x: 0, y: 0),
+          Coordinate(x: 1, y: 0),
+          Coordinate(x: 2, y: 0),
+          Coordinate(x: 3, y: 0),
+          Coordinate(x: 0, y: 1),
+          Coordinate(x: 1, y: 1),
+          Coordinate(x: 3, y: 1),
+          Coordinate(x: 0, y: 2),
+          Coordinate(x: 1, y: 2),
+          Coordinate(x: 1, y: 3),
+          Coordinate(x: 3, y: 3),
+          Coordinate(x: 1, y: 4),
+          Coordinate(x: 2, y: 4),
+          Coordinate(x: 3, y: 4),
+          Coordinate(x: 1, y: 5),
+          Coordinate(x: 2, y: 5),
+        ],
+        colour: Colors.blue
+        // shapeColours[0],
+        ),
+    Shape(
+        index: 1,
+        cellCoords: [
+          Coordinate(x: 4, y: 0),
+          Coordinate(x: 5, y: 0),
+          Coordinate(x: 4, y: 1),
+          Coordinate(x: 5, y: 1),
+          Coordinate(x: 6, y: 1),
+          Coordinate(x: 7, y: 1),
+          Coordinate(x: 5, y: 2),
+          Coordinate(x: 6, y: 2),
+          Coordinate(x: 7, y: 2),
+          Coordinate(x: 5, y: 3),
+          Coordinate(x: 6, y: 3),
+          Coordinate(x: 6, y: 4),
+        ],
+        colour: Colors.green
+        // shapeColours[1],
+        ),
+    Shape(
+        index: 2,
+        cellCoords: [
+          Coordinate(x: 6, y: 0),
+          Coordinate(x: 7, y: 0),
+          Coordinate(x: 8, y: 0),
+        ],
+        colour: Colors.red
+        // shapeColours[2],
+        ),
+    Shape(
+        index: 3,
+        cellCoords: [
+          Coordinate(x: 2, y: 1),
+          Coordinate(x: 2, y: 2),
+          Coordinate(x: 2, y: 3),
+          Coordinate(x: 3, y: 2),
+        ],
+        colour: Colors.red
+        // shapeColours[3]
+        ),
+    Shape(
+        index: 4,
+        cellCoords: [
+          Coordinate(x: 4, y: 2),
+          Coordinate(x: 4, y: 3),
+          Coordinate(x: 4, y: 4),
+        ],
+        colour: Colors.grey
+        // shapeColours[4]
+        ),
+    Shape(
+        index: 5,
+        cellCoords: [
+          Coordinate(x: 6, y: 8),
+          Coordinate(x: 7, y: 3),
+          Coordinate(x: 7, y: 4),
+          Coordinate(x: 7, y: 5),
+          Coordinate(x: 7, y: 6),
+          Coordinate(x: 7, y: 7),
+          Coordinate(x: 7, y: 8),
+          Coordinate(x: 8, y: 1),
+          Coordinate(x: 8, y: 2),
+          Coordinate(x: 8, y: 3),
+          Coordinate(x: 8, y: 4),
+          Coordinate(x: 8, y: 5),
+          Coordinate(x: 8, y: 6),
+          Coordinate(x: 8, y: 7),
+          Coordinate(x: 8, y: 8),
+        ],
+        colour: Colors.blue
+        // shapeColours[5]
+        ),
+    Shape(
+        index: 6,
+        cellCoords: [
+          Coordinate(x: 0, y: 3),
+          Coordinate(x: 0, y: 4),
+          Coordinate(x: 0, y: 5),
+          Coordinate(x: 0, y: 6),
+          Coordinate(x: 0, y: 7),
+          Coordinate(x: 0, y: 8),
+          Coordinate(x: 1, y: 6),
+          Coordinate(x: 1, y: 7),
+          Coordinate(x: 1, y: 8),
+          Coordinate(x: 2, y: 6),
+          Coordinate(x: 2, y: 7),
+          Coordinate(x: 2, y: 8),
+          Coordinate(x: 3, y: 7),
+        ],
+        colour: Colors.green
+        // shapeColours[6]
+        ),
+    Shape(
+        index: 7,
+        cellCoords: [
+          Coordinate(x: 3, y: 5),
+          Coordinate(x: 3, y: 6),
+          Coordinate(x: 4, y: 5),
+          Coordinate(x: 4, y: 6),
+          Coordinate(x: 4, y: 7),
+          Coordinate(x: 5, y: 4),
+          Coordinate(x: 5, y: 5),
+          Coordinate(x: 5, y: 6),
+          Coordinate(x: 5, y: 7),
+          Coordinate(x: 6, y: 5),
+          Coordinate(x: 6, y: 6),
+          Coordinate(x: 6, y: 7),
+        ],
+        colour: Colors.red
+        // shapeColours[7]
+        ),
+    Shape(
+        index: 8,
+        cellCoords: [
+          Coordinate(x: 3, y: 8),
+          Coordinate(x: 4, y: 8),
+          Coordinate(x: 5, y: 8),
+        ],
+        colour: Colors.grey
+        // shapeColours[8]
+        ),
+  ];
+
+  return shapes;
+}
