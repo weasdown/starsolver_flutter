@@ -5,37 +5,51 @@ import '../logic/cell.dart';
 import 'cell_widget.dart';
 
 /// A widget to display a [Board].
-class BoardWidget extends StatefulWidget {
+class BoardWidget extends StatelessWidget {
   final Board board;
-  const BoardWidget({super.key, required this.board});
+  final double spacingAround;
 
-  @override
-  State<BoardWidget> createState() => _BoardWidgetState();
-}
+  final void Function() onComplete;
 
-class _BoardWidgetState extends State<BoardWidget> {
-  final double spacingWithin = 8;
+  const BoardWidget({
+    super.key,
+    required this.board,
+    required this.spacingAround,
+    required this.onComplete,
+  });
 
-  final double spacingAround = 40.0;
+  /// All the [CellWidget]s for this [BoardWidget].
+  List<CellWidget> get cellWidgets => List<CellWidget>.from(
+        board.cells.map((Cell cell) => CellWidget(
+              cell: cell,
+              board: board,
+              onComplete: onComplete,
+            )),
+      );
+
+  /// Amount of spacing between [CellWidget]s.
+  final double spacingWithin = 0;
+
+  /// Set all [cells] to blank.
+  ///
+  /// Sets the [Cell.status] of all [cells] to [CellStatus.blank].
+  void clearAllCells() {
+    for (Cell cell in board.cells) {
+      cell.status = CellStatus.blank;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<CellWidget> cellWidgets = List<CellWidget>.from(
-      widget.board.cells.map((Cell cell) => CellWidget(cell: cell)),
-    );
-
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        spacingAround,
-        spacingAround,
-        spacingAround,
-        0,
-      ),
-      child: GridView.count(
-        mainAxisSpacing: spacingWithin,
-        crossAxisSpacing: spacingWithin,
-        crossAxisCount: Board.dimension,
-        children: cellWidgets,
+    return Flexible(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: spacingAround),
+        child: GridView.count(
+          mainAxisSpacing: spacingWithin,
+          crossAxisSpacing: spacingWithin,
+          crossAxisCount: Board.dimension,
+          children: cellWidgets,
+        ),
       ),
     );
   }
